@@ -1,5 +1,10 @@
 [
   {
+    "type": "comment",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "module",
     "named": true,
     "fields": {},
@@ -15,7 +20,7 @@
     }
   },
   {
-    "type": "comment",
-    "named": true
+    "type": "#",
+    "named": false
   }
 ]
