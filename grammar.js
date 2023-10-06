@@ -37,7 +37,7 @@ module.exports = grammar(
 
             _normal_instruction: $ => seq($.mnemonic, separated(",", $._operand)),
             _gcc_pseudo_op: $ => seq(
-                $.gcc_mnemonic,
+                alias($.gcc_mnemonic, $.mnemonic),
                 separated_space_or_comma(
                     choice(
                         $._constant,
@@ -49,13 +49,14 @@ module.exports = grammar(
             // label: $ => seq($.identifier, ':', optional(seq('(', $.identifier, ')'))),
             label: $ => seq(/.+:/),
 
-            identifier: $ => /[\.@\(\)\-_\w]+/,
+            identifier: $ => /[a-zA-Z\.@\(\)\-_][\.@\(\)\-_\w]+/,
 
             gcc_mnemonic: $ => /\.[\-_\w]+/,  // Reference: https://sourceware.org/binutils/docs/as/Pseudo-Ops.html
 
             mnemonic: $ => /\w+/,
 
             _operand: $ => choice(
+                // $.memory  TODO: Make sure to add this
                 $.register,
                 $.pointer,
                 $._constant,

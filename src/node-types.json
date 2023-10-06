@@ -17,10 +17,6 @@
           "named": true
         },
         {
-          "type": "gcc_mnemonic",
-          "named": true
-        },
-        {
           "type": "identifier",
           "named": true
         },
@@ -161,10 +157,6 @@
   {
     "type": "dword",
     "named": false
-  },
-  {
-    "type": "gcc_mnemonic",
-    "named": true
   },
   {
     "type": "identifier",

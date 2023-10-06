@@ -16,35 +16,35 @@ pseudo-ops
 
 (program
   (instruction
-    (gcc_mnemonic))
+    (mnemonic))
   (instruction
-    (gcc_mnemonic)
+    (mnemonic)
     (identifier))
   (instruction
-    (gcc_mnemonic)
+    (mnemonic)
     (identifier))
   (instruction
-    (gcc_mnemonic)
+    (mnemonic)
     (identifier))
   (instruction
-    (gcc_mnemonic)
+    (mnemonic)
     (string))
   (instruction
-    (gcc_mnemonic)
+    (mnemonic)
     (identifier))
   (instruction
-    (gcc_mnemonic)
+    (mnemonic)
     (identifier)
     (identifier))
   (instruction
-    (gcc_mnemonic)
+    (mnemonic)
     (identifier)
     (string)
     (identifier)
     (identifier)
     (identifier))
   (instruction
-    (gcc_mnemonic)
+    (mnemonic)
     (identifier)
     (identifier)))
 
@@ -59,6 +59,7 @@ pseudo-ops 2
 
 (program
   (instruction
+    (mnemonic)
     (integer)
     (string)))
 
@@ -84,6 +85,7 @@ pseudo-ops 4
 
 (program
   (instruction
+    (mnemonic)
     (integer)
     (integer)
     (integer)))

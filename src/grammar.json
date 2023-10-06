@@ -138,8 +138,13 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "gcc_mnemonic"
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "gcc_mnemonic"
+          },
+          "named": true,
+          "value": "mnemonic"
         },
         {
           "type": "CHOICE",
@@ -235,7 +240,7 @@
     },
     "identifier": {
       "type": "PATTERN",
-      "value": "[\\.@\\(\\)\\-_\\w]+"
+      "value": "[a-zA-Z\\.@\\(\\)\\-_][\\.@\\(\\)\\-_\\w]+"
     },
     "gcc_mnemonic": {
       "type": "PATTERN",
