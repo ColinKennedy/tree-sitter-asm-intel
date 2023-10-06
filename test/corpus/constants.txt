@@ -2,56 +2,124 @@
 decimal
 ==============================================================================
 
-mov     ah,123          ; decimal
-mov     ah,0100         ; decimal
-mov     ah,0120d        ; decimal suffix
-mov     ah,0d200        ; decimal infix
+mov     ah,123
+mov     ah,0100
+mov     ah,0120d
+mov     ah,0d200
 
 -----------------------------------------------------------------------------
 
-(program)
+(program
+  (instruction
+    (mnemonic)
+    (register)
+    (integer))
+  (instruction
+    (mnemonic)
+    (register)
+    (integer))
+  (instruction
+    (mnemonic)
+    (register)
+    (integer))
+  (instruction
+    (mnemonic)
+    (register)
+    (integer)))
 
 
 ==============================================================================
 hexidecimal
 ==============================================================================
 
-mov     cx,0xc4         ; hexidecimal
-mov     cx,0c4h         ; hexidecimal
-mov     cx,$0c2         ; hexidecimal (the 0 is required)
-mov     cx,0hc2         ; hexidecimal
+mov     cx,0xc4
+mov     cx,0c4h
+mov     cx,$0c2
+mov     cx,0hc2
 
 -----------------------------------------------------------------------------
 
-(program)
+(program
+  (instruction
+    (mnemonic)
+    (register)
+    (hexadecimal))
+  (instruction
+    (mnemonic)
+    (register)
+    (hexadecimal))
+  (instruction
+    (mnemonic)
+    (register)
+    (hexadecimal))
+  (instruction
+    (mnemonic)
+    (register)
+    (hexadecimal)))
 
 
 ==============================================================================
 binary
 ==============================================================================
 
-mov     al,11101111b    ; binary
-mov     al,0010_1000b   ; binary
-mov     al,1100_1110y   ; binary
-mov     al,0b1110_1100  ; binary
-mov     al,0y0000_1000  ; binary
+mov     al,11101111b
+mov     al,0010_1000b
+mov     al,1100_1110y
+mov     al,0b1110_1100
+mov     al,0y0000_1000
 
 
 -----------------------------------------------------------------------------
 
-(program)
+(program
+  (instruction
+    (mnemonic)
+    (register)
+    (binary))
+  (instruction
+    (mnemonic)
+    (register)
+    (binary))
+  (instruction
+    (mnemonic)
+    (register)
+    (binary))
+  (instruction
+    (mnemonic)
+    (register)
+    (binary))
+  (instruction
+    (mnemonic)
+    (register)
+    (binary)))
 
 
 ==============================================================================
 octal
 ==============================================================================
 
-mov     dx,321q         ; octal
-mov     dx,321o         ; octal
-mov     dx,0q300        ; octal
-mov     dx,0o300        ; octal
+mov     dx,321q
+mov     dx,321o
+mov     dx,0q300
+mov     dx,0o300
 
 
 -----------------------------------------------------------------------------
 
-(program)
+(program
+  (instruction
+    (mnemonic)
+    (register)
+    (octal))
+  (instruction
+    (mnemonic)
+    (register)
+    (octal))
+  (instruction
+    (mnemonic)
+    (register)
+    (octal))
+  (instruction
+    (mnemonic)
+    (register)
+    (octal)))

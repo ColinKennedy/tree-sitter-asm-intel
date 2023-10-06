@@ -98,7 +98,14 @@ module.exports = grammar(
                 "]",
             ),
 
-            hexadecimal: $ => /0x[0-9A-Fa-f][0-9A-Fa-f_]*/,  // TODO: Make this real, later
+            // Reference: https://github.com/bearcove/tree-sitter-x86asm/blob/9b0fab1092a2fe01e285ea4c892faa08b43cf125/grammar.js#L168-L169
+            hexadecimal: $ => choice(/[0-9a-fA-F]+h/, /\$0[0-9a-fA-F]+/, /0[xh][0-9a-fA-F]+/),
+
+            // Reference: https://github.com/bearcove/tree-sitter-x86asm/blob/9b0fab1092a2fe01e285ea4c892faa08b43cf125/grammar.js#L173
+            binary: $ => choice(/[01_]+[by]/, /0[by][01_]+/),
+
+            // Reference: https://github.com/bearcove/tree-sitter-x86asm/blob/9b0fab1092a2fe01e285ea4c892faa08b43cf125/grammar.js#L171C1-L171C64
+            octal: $ => choice(/[0-7]+[qo]/, /0[oq][0-7]+/),
 
             // TODO: I can't remember if registers can start with a number. But
             // so far I can't think of any which do. Possibly remove the
@@ -107,9 +114,11 @@ module.exports = grammar(
             register: $ => /[a-zA-Z]\w+/,
 
             _constant: $ => choice(
+                $.binary,
                 $.float,
                 $.hexadecimal,
                 $.integer,
+                $.octal,
                 $.string,
             ),
             float: $ => choice(
@@ -118,7 +127,7 @@ module.exports = grammar(
                 /-?\d+\.(\d+)?(e[-+]?\d+(\.\d*)?)?/,
             ),
 
-            integer: $ => /-?[0-9][0-9_]*/,  // TODO: Check if this can be simplified
+            integer: $ => /-?([0-9]+d|0d[0-9]+|[0-9]+)/,  // TODO: Check if this can be simplified
             string: $ => /"[^"]*"/,
         }
     }

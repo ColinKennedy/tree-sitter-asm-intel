@@ -1,6 +1,16 @@
 [
   {
+    "type": "binary",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "float",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "hexadecimal",
     "named": true,
     "fields": {}
   },
@@ -12,6 +22,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "binary",
+          "named": true
+        },
         {
           "type": "float",
           "named": true
@@ -33,6 +47,10 @@
           "named": true
         },
         {
+          "type": "octal",
+          "named": true
+        },
+        {
           "type": "pointer",
           "named": true
         },
@@ -49,6 +67,11 @@
   },
   {
     "type": "label",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "octal",
     "named": true,
     "fields": {}
   },
@@ -170,10 +193,6 @@
   {
     "type": "dword",
     "named": false
-  },
-  {
-    "type": "hexadecimal",
-    "named": true
   },
   {
     "type": "identifier",
