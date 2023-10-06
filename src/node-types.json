@@ -188,6 +188,10 @@
     "named": true
   },
   {
+    "type": "ptr",
+    "named": false
+  },
+  {
     "type": "qword",
     "named": false
   },

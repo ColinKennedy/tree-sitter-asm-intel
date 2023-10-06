@@ -76,7 +76,7 @@ module.exports = grammar(
                     "qword",
                     "word",
                 ),
-                "PTR",
+                choice("PTR", "ptr"),
             ),
 
             // Assembly deregisters can take the form:

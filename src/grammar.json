@@ -329,8 +329,17 @@
           ]
         },
         {
-          "type": "STRING",
-          "value": "PTR"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "PTR"
+            },
+            {
+              "type": "STRING",
+              "value": "ptr"
+            }
+          ]
         }
       ]
     },
