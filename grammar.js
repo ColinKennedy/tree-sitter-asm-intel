@@ -56,7 +56,6 @@ module.exports = grammar(
             mnemonic: $ => /\w+/,
 
             _operand: $ => choice(
-                // $.memory  TODO: Make sure to add this
                 $.register,
                 $.pointer,
                 $._constant,
@@ -90,13 +89,14 @@ module.exports = grammar(
                 optional($.integer),
                 "[",
                 seq(
-                    choice($.register, $.memory),
+                    choice($.register, $.hexadecimal),
                     repeat(seq(choice("-", "+", "*"), $.integer)),
                 ),
                 "]",
             ),
 
-            memory: $ => /0x[a-zA-Z0-9]+/,  // TODO: Make this real, later
+            // hexadecimal: $ => /0x[a-zA-Z0-9]+/,  // TODO: Remove, later
+            hexadecimal: $ => /0x[0-9A-Fa-f][0-9A-Fa-f_]*/,  // TODO: Make this real, later
 
             // TODO: I can't remember if registers can start with a number. But
             // so far I can't think of any which do. Possibly remove the
@@ -106,6 +106,7 @@ module.exports = grammar(
 
             _constant: $ => choice(
                 $.float,
+                $.hexadecimal,
                 $.integer,
                 $.string,
             ),
@@ -115,7 +116,7 @@ module.exports = grammar(
                 /-?\d+\.(\d+)?(e[-+]?\d+(\.\d*)?)?/,
             ),
 
-            integer: $ => /-?([0-9][0-9_]*|0x[0-9A-Fa-f][0-9A-Fa-f_]*)/,  // TODO: Check if this can be simplified
+            integer: $ => /-?[0-9][0-9_]*/,  // TODO: Check if this can be simplified
             string: $ => /"[^"]*"/,
         }
     }

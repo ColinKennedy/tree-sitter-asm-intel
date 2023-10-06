@@ -17,6 +17,10 @@
           "named": true
         },
         {
+          "type": "hexadecimal",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -57,11 +61,11 @@
       "required": true,
       "types": [
         {
-          "type": "integer",
+          "type": "hexadecimal",
           "named": true
         },
         {
-          "type": "memory",
+          "type": "integer",
           "named": true
         },
         {
@@ -159,15 +163,15 @@
     "named": false
   },
   {
+    "type": "hexadecimal",
+    "named": true
+  },
+  {
     "type": "identifier",
     "named": true
   },
   {
     "type": "integer",
-    "named": true
-  },
-  {
-    "type": "memory",
     "named": true
   },
   {

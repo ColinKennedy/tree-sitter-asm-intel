@@ -22,7 +22,7 @@ pseudo-ops
     (identifier))
   (instruction
     (mnemonic)
-    (identifier))
+    (hexadecimal))
   (instruction
     (mnemonic)
     (identifier))
