@@ -19,10 +19,8 @@ module.exports = grammar(
     {
         name: "asm_intel",
 
-        conflicts: $ => [ [$.instruction] ],
-
         rules: {
-            module: $ => repeat($._statement),
+            program: $ => separated('\n', $._statement),
 
             _statement: $ => choice(
                 $.comment,
@@ -52,12 +50,17 @@ module.exports = grammar(
                 /-?\d*\.\d+(e[-+]?\d+(\.\d*)?)?/,
                 /-?\d+\.(\d+)?(e[-+]?\d+(\.\d*)?)?/,
             ),
-            integer: $ => prec(2, /-?([0-9][0-9_]*|0x[0-9A-Fa-f][0-9A-Fa-f_]*)/),
+            integer: $ => /-?([0-9][0-9_]*|0x[0-9A-Fa-f][0-9A-Fa-f_]*)/,
         }
     }
 )
 
+
 function comma_separated(rule) {
-  return optional(seq(rule, repeat(seq(",", rule))));
+  return separated(",", rule)
 }
 
+
+function separated(separator, rule) {
+    return optional(seq(rule, repeat(seq(separator, rule)), optional(separator)))
+}

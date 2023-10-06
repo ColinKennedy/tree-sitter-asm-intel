@@ -37,17 +37,12 @@
     }
   },
   {
-    "type": "integer",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "mnemonic",
     "named": true,
     "fields": {}
   },
   {
-    "type": "module",
+    "type": "program",
     "named": true,
     "fields": {},
     "children": {
@@ -71,11 +66,19 @@
     "fields": {}
   },
   {
+    "type": "\n",
+    "named": false
+  },
+  {
     "type": "#",
     "named": false
   },
   {
     "type": ",",
     "named": false
+  },
+  {
+    "type": "integer",
+    "named": true
   }
 ]
