@@ -139,30 +139,144 @@
         },
         {
           "type": "SYMBOL",
+          "name": "pointer"
+        },
+        {
+          "type": "SYMBOL",
           "name": "_constant"
         }
       ]
     },
+    "pointer": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "BYTE"
+            },
+            {
+              "type": "STRING",
+              "value": "DWORD"
+            },
+            {
+              "type": "STRING",
+              "value": "QWORD"
+            },
+            {
+              "type": "STRING",
+              "value": "WORD"
+            },
+            {
+              "type": "STRING",
+              "value": "byte"
+            },
+            {
+              "type": "STRING",
+              "value": "dword"
+            },
+            {
+              "type": "STRING",
+              "value": "qword"
+            },
+            {
+              "type": "STRING",
+              "value": "word"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "PTR"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_deregister"
+        }
+      ]
+    },
+    "_deregister": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "["
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "register"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "memory"
+                }
+              ]
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "STRING",
+                        "value": "-"
+                      },
+                      {
+                        "type": "STRING",
+                        "value": "+"
+                      },
+                      {
+                        "type": "STRING",
+                        "value": "*"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "integer"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "]"
+        }
+      ]
+    },
+    "memory": {
+      "type": "PATTERN",
+      "value": "[0-9]x[0-9]+"
+    },
     "register": {
       "type": "PATTERN",
-      "value": "\\w+"
+      "value": "[^0-9]\\w+"
     },
     "_constant": {
-      "type": "PREC",
-      "value": 2,
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "float"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "integer"
-          }
-        ]
-      }
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "float"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "integer"
+        }
+      ]
     },
     "float": {
       "type": "CHOICE",
@@ -178,8 +292,8 @@
       ]
     },
     "integer": {
-      "type": "PATTERN",
-      "value": "-?([0-9][0-9_]*|0x[0-9A-Fa-f][0-9A-Fa-f_]*)"
+      "type": "STRING",
+      "value": "16"
     }
   },
   "extras": [

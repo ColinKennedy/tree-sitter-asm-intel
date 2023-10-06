@@ -29,16 +29,52 @@ module.exports = grammar(
 
             comment: $ => seq("#", /.*/),
 
-            instruction: $ => seq($.mnemonic, comma_separated($._operand)),
+            instruction: $ => seq($.mnemonic, separated(",", $._operand)),
 
             mnemonic: $ => /\w+/,
 
             _operand: $ => choice(
                 $.register,
+                $.pointer,
                 $._constant,
             ),
 
-            register: $ => /\w+/,
+            pointer: $ => seq(
+                choice(
+                    "BYTE",
+                    "DWORD",
+                    "QWORD",
+                    "WORD",
+                    "byte",
+                    "dword",
+                    "qword",
+                    "word",
+                ),
+                "PTR",
+                $._deregister,
+            ),
+
+            // Assembly deregisters can take the form:
+            //
+            // - SIZE PTR [base]
+            // - SIZE PTR [base + index]
+            // - SIZE PTR [base + index * scale]
+            // - SIZE PTR [base + index * scale + displacement]
+            //
+            // This accounts for all of these
+            //
+            _deregister: $ => seq(
+                "[",
+                seq(choice($.register, $.memory), repeat(seq(choice("-", "+", "*"), $.integer))),
+                "]",
+            ),
+
+            memory: $ => /[0-9]x[0-9]+/,  // TODO: Make this real, later
+
+            // TODO: registers may start with numbers. But so far I can't think
+            // of any which do. Possibly change in the future, later
+            //
+            register: $ => /[^0-9]\w+/,
 
             _constant: $ => choice(
                 $.float,
@@ -50,15 +86,11 @@ module.exports = grammar(
                 /-?\d*\.\d+(e[-+]?\d+(\.\d*)?)?/,
                 /-?\d+\.(\d+)?(e[-+]?\d+(\.\d*)?)?/,
             ),
-            integer: $ => /-?([0-9][0-9_]*|0x[0-9A-Fa-f][0-9A-Fa-f_]*)/,
+            integer: $ => "16",
+            // integer: $ => /-?([0-9][0-9_]*|0x[0-9A-Fa-f][0-9A-Fa-f_]*)/,
         }
     }
 )
-
-
-function comma_separated(rule) {
-  return separated(",", rule)
-}
 
 
 function separated(separator, rule) {
