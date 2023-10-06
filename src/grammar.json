@@ -274,6 +274,27 @@
           "type": "CHOICE",
           "members": [
             {
+              "type": "SYMBOL",
+              "name": "pointer_width"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_deregister"
+        }
+      ]
+    },
+    "pointer_width": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
               "type": "STRING",
               "value": "BYTE"
             },
@@ -310,10 +331,6 @@
         {
           "type": "STRING",
           "value": "PTR"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_deregister"
         }
       ]
     },

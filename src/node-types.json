@@ -69,11 +69,20 @@
           "named": true
         },
         {
+          "type": "pointer_width",
+          "named": true
+        },
+        {
           "type": "register",
           "named": true
         }
       ]
     }
+  },
+  {
+    "type": "pointer_width",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "program",

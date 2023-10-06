@@ -46,7 +46,6 @@ module.exports = grammar(
                 )
             ),
 
-            // label: $ => seq($.identifier, ':', optional(seq('(', $.identifier, ')'))),
             label: $ => seq(/.+:/),
 
             identifier: $ => /[a-zA-Z\.@\(\)\-_][\.@\(\)\-_\w]+/,
@@ -62,6 +61,11 @@ module.exports = grammar(
             ),
 
             pointer: $ => seq(
+                optional($.pointer_width),
+                $._deregister,
+            ),
+
+            pointer_width: $ => seq(
                 choice(
                     "BYTE",
                     "DWORD",
@@ -73,7 +77,6 @@ module.exports = grammar(
                     "word",
                 ),
                 "PTR",
-                $._deregister,
             ),
 
             // Assembly deregisters can take the form:
@@ -95,7 +98,6 @@ module.exports = grammar(
                 "]",
             ),
 
-            // hexadecimal: $ => /0x[a-zA-Z0-9]+/,  // TODO: Remove, later
             hexadecimal: $ => /0x[0-9A-Fa-f][0-9A-Fa-f_]*/,  // TODO: Make this real, later
 
             // TODO: I can't remember if registers can start with a number. But
