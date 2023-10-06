@@ -25,11 +25,14 @@ module.exports = grammar(
             _statement: $ => choice(
                 $.comment,
                 $.instruction,
+                $.label,
             ),
 
             comment: $ => seq("#", /.*/),
 
             instruction: $ => seq($.mnemonic, separated(",", $._operand)),
+
+            label: $ => seq(/.+:/),
 
             mnemonic: $ => /\w+/,
 

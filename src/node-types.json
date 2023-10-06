@@ -41,6 +41,11 @@
     }
   },
   {
+    "type": "label",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "pointer",
     "named": true,
     "fields": {},
@@ -77,6 +82,10 @@
         },
         {
           "type": "instruction",
+          "named": true
+        },
+        {
+          "type": "label",
           "named": true
         }
       ]

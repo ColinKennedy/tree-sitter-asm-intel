@@ -56,6 +56,10 @@
         {
           "type": "SYMBOL",
           "name": "instruction"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "label"
         }
       ]
     },
@@ -123,6 +127,15 @@
               "type": "BLANK"
             }
           ]
+        }
+      ]
+    },
+    "label": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": ".+:"
         }
       ]
     },
