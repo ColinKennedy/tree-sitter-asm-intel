@@ -10,6 +10,7 @@ pseudo-ops
 .weak	_ZSt3sinf
 .type	_ZSt3sinf, @function
 .section	.text._ZSt3sinf,"axG",@progbits,_ZSt3sinf,comdat
+.size	_ZSt3cosf, .-_ZSt3cosf
 
 -----------------------------------------------------------------------------
 
@@ -41,6 +42,10 @@ pseudo-ops
     (string)
     (identifier)
     (identifier)
+    (identifier))
+  (instruction
+    (gcc_mnemonic)
+    (identifier)
     (identifier)))
 
 
@@ -49,7 +54,6 @@ pseudo-ops 2
 ==============================================================================
 
 .file 1 "/opt/rh/devtoolset-9/root/usr/include/c++/9/cmath"
-.size	_ZSt3cosf, .-_ZSt3cosf
 .ident	"GCC: (GNU) 9.3.1 20200408 (Red Hat 9.3.1-2)"
 .loc 1 185 3
 
