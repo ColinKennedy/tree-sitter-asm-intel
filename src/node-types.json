@@ -1,10 +1,5 @@
 [
   {
-    "type": "comment",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "float",
     "named": true,
     "fields": {}
@@ -108,7 +103,7 @@
     "named": false
   },
   {
-    "type": "#",
+    "type": " ",
     "named": false
   },
   {
@@ -158,6 +153,10 @@
   {
     "type": "byte",
     "named": false
+  },
+  {
+    "type": "comment",
+    "named": true
   },
   {
     "type": "dword",

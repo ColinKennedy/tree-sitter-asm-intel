@@ -28,7 +28,7 @@ module.exports = grammar(
                 $.label,
             ),
 
-            comment: $ => seq("#", /.*/),
+            comment: $ => /(\/\/|#|;).*/,
 
             instruction: $ => choice(
                 $._normal_instruction,
@@ -38,8 +38,7 @@ module.exports = grammar(
             _normal_instruction: $ => seq($.mnemonic, separated(",", $._operand)),
             _gcc_pseudo_op: $ => seq(
                 $.gcc_mnemonic,
-                separated(
-                    ",",
+                separated_space_or_comma(
                     choice(
                         $._constant,
                         $.identifier,
@@ -47,10 +46,13 @@ module.exports = grammar(
                 )
             ),
 
+            // label: $ => seq($.identifier, ':', optional(seq('(', $.identifier, ')'))),
             label: $ => seq(/.+:/),
 
             identifier: $ => /[\.@\(\)\-_\w]+/,
-            gcc_mnemonic: $ => /\.[\-_\w]+/,
+
+            gcc_mnemonic: $ => /\.[\-_\w]+/,  // Reference: https://sourceware.org/binutils/docs/as/Pseudo-Ops.html
+
             mnemonic: $ => /\w+/,
 
             _operand: $ => choice(
@@ -93,7 +95,7 @@ module.exports = grammar(
                 "]",
             ),
 
-            memory: $ => /[0-9]x[0-9]+/,  // TODO: Make this real, later
+            memory: $ => /0x[a-zA-Z0-9]+/,  // TODO: Make this real, later
 
             // TODO: I can't remember if registers can start with a number. But
             // so far I can't think of any which do. Possibly remove the
@@ -112,12 +114,18 @@ module.exports = grammar(
                 /-?\d+\.(\d+)?(e[-+]?\d+(\.\d*)?)?/,
             ),
 
-            integer: $ => /-?([0-9][0-9_]*|0x[0-9A-Fa-f][0-9A-Fa-f_]*)/,
+            integer: $ => /-?([0-9][0-9_]*|0x[0-9A-Fa-f][0-9A-Fa-f_]*)/,  // TODO: Check if this can be simplified
             string: $ => /"[^"]*"/,
         }
     }
 )
 
+
+function separated_space_or_comma(rule) {
+    separator = choice(",", " ")
+
+    return optional(seq(rule, repeat(seq(separator, rule)), optional(separator)))
+}
 
 function separated(separator, rule) {
     return optional(seq(rule, repeat(seq(separator, rule)), optional(separator)))

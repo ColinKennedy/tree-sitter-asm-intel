@@ -4,3 +4,6 @@
     - start-of-line comments
     - inline comments
     - Make sure sections work (BSS, DATA, TEXT, etc)
+- Replace all references of "gcc" to "meta"
+- Make sure the pointer syntax works (base + index * scale + displacement)
+    - Reference: https://github.com/rush-rs/tree-sitter-asm/blob/main/grammar.js#L22-L44

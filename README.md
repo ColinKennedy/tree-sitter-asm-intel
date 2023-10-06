@@ -1,3 +1,5 @@
+https://github.com/bearcove/tree-sitter-x86asm/blob/main/grammar.js
+
 # tree-sitter-asm-intel
 Parse Assembly text using [tree-sitter](https://tree-sitter.github.io/tree-sitter).
 
