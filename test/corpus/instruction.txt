@@ -8,5 +8,19 @@ push rbp
 
 (module
   (instruction
-    (mnemonic))
-    (register))
+    (mnemonic)
+    (register)))
+
+==============================================================================
+instruction - binary mov, two registers
+==============================================================================
+
+mov rbp, rsp
+
+-----------------------------------------------------------------------------
+
+(module
+  (instruction
+    (mnemonic)
+    (register)
+    (register)))

@@ -19,6 +19,8 @@ module.exports = grammar(
     {
         name: "asm_intel",
 
+        conflicts: $ => [ [$.instruction] ],
+
         rules: {
             module: $ => repeat($._statement),
 
@@ -29,20 +31,20 @@ module.exports = grammar(
 
             comment: $ => seq("#", /.*/),
 
-            instruction: $ => prec.left(2, seq($.mnemonic, repeat($.operand))),
+            instruction: $ => seq($.mnemonic, comma_separated($._operand)),
 
             mnemonic: $ => /\w+/,
 
-            operand: $ => choice(
+            _operand: $ => choice(
                 $.register,
-                $.constant,
+                $._constant,
             ),
 
             register: $ => /\w+/,
 
-            constant: $ => choice(
+            _constant: $ => choice(
                 $.float,
-                $.other,  // TODO: Remove this later
+                $.integer,
             ),
             float: $ => choice(
                 // A float has to be at least ``5.`` or ``.5``
@@ -50,7 +52,12 @@ module.exports = grammar(
                 /-?\d*\.\d+(e[-+]?\d+(\.\d*)?)?/,
                 /-?\d+\.(\d+)?(e[-+]?\d+(\.\d*)?)?/,
             ),
-            other: $ => "thing",
+            integer: $ => prec(2, /-?([0-9][0-9_]*|0x[0-9A-Fa-f][0-9A-Fa-f_]*)/),
         }
     }
 )
+
+function comma_separated(rule) {
+  return optional(seq(rule, repeat(seq(",", rule))));
+}
+
