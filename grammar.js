@@ -86,11 +86,10 @@ module.exports = grammar(
             ),
             float: $ => choice(
                 // A float has to be at least ``5.`` or ``.5``
-                //
                 /-?\d*\.\d+(e[-+]?\d+(\.\d*)?)?/,
                 /-?\d+\.(\d+)?(e[-+]?\d+(\.\d*)?)?/,
             ),
-            // integer: $ => "16",
+
             integer: $ => /-?([0-9][0-9_]*|0x[0-9A-Fa-f][0-9A-Fa-f_]*)/,
         }
     }

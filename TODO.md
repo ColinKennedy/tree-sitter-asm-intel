@@ -1,2 +1,7 @@
 - Go through TODO notes in the code
 - Make sure this works in a large repository of assembly code
+- Add support for
+    - labels
+    - start-of-line comments
+    - inline comments
+    - Make sure sections work (BSS, DATA, TEXT, etc)
