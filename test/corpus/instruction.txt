@@ -15,58 +15,6 @@ leave
 
 
 ==============================================================================
-pseudo-ops
-==============================================================================
-
-.cfi_endproc
-.intel_syntax noprefix
-.byte	0x7
-.long	.LASF1189
-.string	"_ZNSt14numeric_limitsIDsE8infinityEv"
-.weak	_ZSt3sinf
-.type	_ZSt3sinf, @function
-
------------------------------------------------------------------------------
-
-(program
-  (instruction
-    (gcc_mnemonic))
-  (instruction
-    (gcc_mnemonic)
-    (identifier))
-  (instruction
-    (gcc_mnemonic)
-    (identifier))
-  (instruction
-    (gcc_mnemonic)
-    (identifier))
-  (instruction
-    (gcc_mnemonic)
-    (string))
-  (instruction
-    (gcc_mnemonic)
-    (identifier))
-  (instruction
-    (gcc_mnemonic)
-    (identifier)
-    (identifier)))
-
-
-==============================================================================
-pseudo-ops 2
-==============================================================================
-
-.file 1 "/opt/rh/devtoolset-9/root/usr/include/c++/9/cmath"
-.size	_ZSt3cosf, .-_ZSt3cosf
-.section	.text._ZSt3sinf,"axG",@progbits,_ZSt3sinf,comdat
-.ident	"GCC: (GNU) 9.3.1 20200408 (Red Hat 9.3.1-2)"
-.loc 1 185 3
-
------------------------------------------------------------------------------
-
-(program)
-
-==============================================================================
 unary push
 ==============================================================================
 
