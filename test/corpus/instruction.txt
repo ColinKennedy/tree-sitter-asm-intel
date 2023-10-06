@@ -31,10 +31,15 @@ instruction - binary sub, register + constant
 ==============================================================================
 
 sub rsp, 16
+sub rsp, -16
 
 -----------------------------------------------------------------------------
 
 (program
+  (instruction
+    (mnemonic)
+    (register)
+    (integer))
   (instruction
     (mnemonic)
     (register)

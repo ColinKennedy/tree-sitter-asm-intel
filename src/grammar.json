@@ -275,7 +275,7 @@
     },
     "register": {
       "type": "PATTERN",
-      "value": "[^0-9]\\w+"
+      "value": "[a-zA-Z]\\w+"
     },
     "_constant": {
       "type": "CHOICE",

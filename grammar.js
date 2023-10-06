@@ -75,10 +75,11 @@ module.exports = grammar(
 
             memory: $ => /[0-9]x[0-9]+/,  // TODO: Make this real, later
 
-            // TODO: registers may start with numbers. But so far I can't think
-            // of any which do. Possibly change in the future, later
+            // TODO: I can't remember if registers can start with a number. But
+            // so far I can't think of any which do. Possibly remove the
+            // `[a-zA-Z]` in the future, later
             //
-            register: $ => /[^0-9]\w+/,
+            register: $ => /[a-zA-Z]\w+/,
 
             _constant: $ => choice(
                 $.float,
