@@ -65,7 +65,10 @@ module.exports = grammar(
             //
             _deregister: $ => seq(
                 "[",
-                seq(choice($.register, $.memory), repeat(seq(choice("-", "+", "*"), $.integer))),
+                seq(
+                    choice($.register, $.memory),
+                    repeat(seq(choice("-", "+", "*"), $.integer)),
+                ),
                 "]",
             ),
 
