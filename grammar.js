@@ -30,10 +30,27 @@ module.exports = grammar(
 
             comment: $ => seq("#", /.*/),
 
-            instruction: $ => seq($.mnemonic, separated(",", $._operand)),
+            instruction: $ => choice(
+                $._normal_instruction,
+                $._gcc_pseudo_op,
+            ),
+
+            _normal_instruction: $ => seq($.mnemonic, separated(",", $._operand)),
+            _gcc_pseudo_op: $ => seq(
+                $.gcc_mnemonic,
+                separated(
+                    ",",
+                    choice(
+                        $._constant,
+                        $.identifier,
+                    )
+                )
+            ),
 
             label: $ => seq(/.+:/),
 
+            identifier: $ => /[\.@\(\)\-_\w]+/,
+            gcc_mnemonic: $ => /\.[\-_\w]+/,
             mnemonic: $ => /\w+/,
 
             _operand: $ => choice(
@@ -87,6 +104,7 @@ module.exports = grammar(
             _constant: $ => choice(
                 $.float,
                 $.integer,
+                $.string,
             ),
             float: $ => choice(
                 // A float has to be at least ``5.`` or ``.5``
@@ -95,6 +113,7 @@ module.exports = grammar(
             ),
 
             integer: $ => /-?([0-9][0-9_]*|0x[0-9A-Fa-f][0-9A-Fa-f_]*)/,
+            string: $ => /"[^"]*"/,
         }
     }
 )

@@ -77,6 +77,19 @@
       ]
     },
     "instruction": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_normal_instruction"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_gcc_pseudo_op"
+        }
+      ]
+    },
+    "_normal_instruction": {
       "type": "SEQ",
       "members": [
         {
@@ -130,6 +143,78 @@
         }
       ]
     },
+    "_gcc_pseudo_op": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "gcc_mnemonic"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "_constant"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "identifier"
+                    }
+                  ]
+                },
+                {
+                  "type": "REPEAT",
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "STRING",
+                        "value": ","
+                      },
+                      {
+                        "type": "CHOICE",
+                        "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "_constant"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "identifier"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": ","
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
     "label": {
       "type": "SEQ",
       "members": [
@@ -138,6 +223,14 @@
           "value": ".+:"
         }
       ]
+    },
+    "identifier": {
+      "type": "PATTERN",
+      "value": "[\\.@\\(\\)\\-_\\w]+"
+    },
+    "gcc_mnemonic": {
+      "type": "PATTERN",
+      "value": "\\.[\\-_\\w]+"
     },
     "mnemonic": {
       "type": "PATTERN",
@@ -300,6 +393,10 @@
         {
           "type": "SYMBOL",
           "name": "integer"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "string"
         }
       ]
     },
@@ -319,6 +416,10 @@
     "integer": {
       "type": "PATTERN",
       "value": "-?([0-9][0-9_]*|0x[0-9A-Fa-f][0-9A-Fa-f_]*)"
+    },
+    "string": {
+      "type": "PATTERN",
+      "value": "\"[^\"]*\""
     }
   },
   "extras": [
