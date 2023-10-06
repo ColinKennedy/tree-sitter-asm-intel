@@ -24,31 +24,33 @@ module.exports = grammar(
 
             _statement: $ => choice(
                 $.comment,
-                // $.instruction,
+                $.instruction,
             ),
 
             comment: $ => seq("#", /.*/),
 
-            // instruction: $ => seq($.mnemonic, repeat($.operand)),
-            //
-            // mnemonic: $ => /\w+/,
-            //
-            // operand: $ => choice(
-            //     $.register,
-            //     $.constant,
-            // ),
-            //
-            // register: $ => /\w+/,
-            //
-            // constant: $ => choice(
-            //     $.float,
-            // ),
-            // float: $ => choice(
-            //     // A float has to be at least ``5.`` or ``.5``
-            //     //
-            //     /-?\d*\.\d+(e[-+]?\d+(\.\d*)?)?/,
-            //     /-?\d+\.(\d+)?(e[-+]?\d+(\.\d*)?)?/,
-            // ),
+            instruction: $ => prec.left(2, seq($.mnemonic, repeat($.operand))),
+
+            mnemonic: $ => /\w+/,
+
+            operand: $ => choice(
+                $.register,
+                $.constant,
+            ),
+
+            register: $ => /\w+/,
+
+            constant: $ => choice(
+                $.float,
+                $.other,  // TODO: Remove this later
+            ),
+            float: $ => choice(
+                // A float has to be at least ``5.`` or ``.5``
+                //
+                /-?\d*\.\d+(e[-+]?\d+(\.\d*)?)?/,
+                /-?\d+\.(\d+)?(e[-+]?\d+(\.\d*)?)?/,
+            ),
+            other: $ => "thing",
         }
     }
 )

@@ -14,6 +14,10 @@
         {
           "type": "SYMBOL",
           "name": "comment"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "instruction"
         }
       ]
     },
@@ -29,6 +33,77 @@
           "value": ".*"
         }
       ]
+    },
+    "instruction": {
+      "type": "PREC_LEFT",
+      "value": 2,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "mnemonic"
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "SYMBOL",
+              "name": "operand"
+            }
+          }
+        ]
+      }
+    },
+    "mnemonic": {
+      "type": "PATTERN",
+      "value": "\\w+"
+    },
+    "operand": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "register"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "constant"
+        }
+      ]
+    },
+    "register": {
+      "type": "PATTERN",
+      "value": "\\w+"
+    },
+    "constant": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "float"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "other"
+        }
+      ]
+    },
+    "float": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "-?\\d*\\.\\d+(e[-+]?\\d+(\\.\\d*)?)?"
+        },
+        {
+          "type": "PATTERN",
+          "value": "-?\\d+\\.(\\d+)?(e[-+]?\\d+(\\.\\d*)?)?"
+        }
+      ]
+    },
+    "other": {
+      "type": "STRING",
+      "value": "thing"
     }
   },
   "extras": [
