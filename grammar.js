@@ -64,6 +64,7 @@ module.exports = grammar(
             // This accounts for all of these
             //
             _deregister: $ => seq(
+                optional($.integer),
                 "[",
                 seq(
                     choice($.register, $.memory),
@@ -89,8 +90,8 @@ module.exports = grammar(
                 /-?\d*\.\d+(e[-+]?\d+(\.\d*)?)?/,
                 /-?\d+\.(\d+)?(e[-+]?\d+(\.\d*)?)?/,
             ),
-            integer: $ => "16",
-            // integer: $ => /-?([0-9][0-9_]*|0x[0-9A-Fa-f][0-9A-Fa-f_]*)/,
+            // integer: $ => "16",
+            integer: $ => /-?([0-9][0-9_]*|0x[0-9A-Fa-f][0-9A-Fa-f_]*)/,
         }
     }
 )

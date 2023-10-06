@@ -201,6 +201,18 @@
       "type": "SEQ",
       "members": [
         {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "integer"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
           "type": "STRING",
           "value": "["
         },
@@ -292,8 +304,8 @@
       ]
     },
     "integer": {
-      "type": "STRING",
-      "value": "16"
+      "type": "PATTERN",
+      "value": "-?([0-9][0-9_]*|0x[0-9A-Fa-f][0-9A-Fa-f_]*)"
     }
   },
   "extras": [

@@ -12,3 +12,20 @@ mov QWORD PTR [rbp], rdi
     (pointer
       (register))
     (register)))
+
+
+==============================================================================
+pointer - offset dereference
+==============================================================================
+
+mov QWORD PTR -8[rbp], rdi
+
+-----------------------------------------------------------------------------
+
+(program
+  (instruction
+    (mnemonic)
+    (pointer
+      (integer)
+      (register))
+    (register)))
