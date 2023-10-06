@@ -50,4 +50,16 @@ mov rdi, QWORD PTR -8[rbp]
 
 -----------------------------------------------------------------------------
 
-(program)
+(program
+  (instruction
+    (mnemonic)
+    (pointer
+      (integer)
+      (register))
+    (register))
+  (instruction
+    (mnemonic)
+    (register)
+    (pointer
+      (integer)
+      (register))))
