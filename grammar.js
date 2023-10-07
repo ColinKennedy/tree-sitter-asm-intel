@@ -48,7 +48,7 @@ module.exports = grammar(
             ),
 
             _gcc_pseudo_op: $ => seq(
-                alias($.gcc_mnemonic, $.directive),
+                alias($.gcc_mnemonic, $.gcc_directive),
                 separated_space_or_comma(
                     choice(
                         $._constant,
