@@ -1,3 +1,5 @@
+- Add "effective_address" rule
+- Is it possible to inject into a `call foo::bar()` with a C++ parser?
 - Make sure this works in a large repository of assembly code
 - Go through TODO notes in the code
 - Add support for

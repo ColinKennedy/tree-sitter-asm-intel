@@ -173,14 +173,27 @@
           "value": "mnemonic"
         },
         {
-          "type": "SYMBOL",
-          "name": "_operand"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_operand"
+              }
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_any_text"
+              },
+              "named": true,
+              "value": "identifier"
+            }
+          ]
         }
       ]
-    },
-    "_any_text": {
-      "type": "PATTERN",
-      "value": "[^\\n]+"
     },
     "instruction": {
       "type": "CHOICE",
@@ -750,6 +763,10 @@
           "value": "'[^']*'"
         }
       ]
+    },
+    "_any_text": {
+      "type": "PATTERN",
+      "value": "[^\\n]+"
     },
     "_identifier": {
       "type": "PATTERN",

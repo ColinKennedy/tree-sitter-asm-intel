@@ -44,11 +44,11 @@ module.exports = grammar(
 
             call_instruction: $ => seq(
                 alias("call", $.mnemonic),
-                // alias($._any_text, $.identifier),
-                $._operand,
+                choice(
+                    repeat($._operand),
+                    alias($._any_text, $.identifier)
+                ),
             ),
-
-            _any_text: $ => /[^\n]+/,
 
             instruction: $ => choice(
                 $._normal_instruction,
@@ -75,16 +75,7 @@ module.exports = grammar(
                 repeat(choice($._operand, $.operator)),
             ),
 
-            operator: $ => choice(
-                "!=",
-                "*",
-                "+",
-                "-",
-                "/",
-                "<=",
-                "==",
-                ">=",
-            ),
+            operator: $ => choice("!=", "*", "+", "-", "/", "<=", "==", ">="),
 
             nasm_macro: $ => seq(/%+/, $._identifier),
 
@@ -190,6 +181,8 @@ module.exports = grammar(
             integer: $ => /-?([0-9]+d|0d[0-9]+|[0-9]+)/,  // TODO: Check if this can be simplified
 
             string: $ => choice(/"[^"]*"/, /'[^']*'/),
+
+            _any_text: $ => /[^\n]+/,
 
             _identifier: $ => /[\w\.\-_\(\)<>@\$]+/,
             identifier: $ => $._identifier,
