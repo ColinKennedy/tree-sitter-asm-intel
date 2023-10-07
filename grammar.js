@@ -19,9 +19,6 @@ module.exports = grammar(
     {
         name: "asm_intel",
 
-        // extras: $ => [
-        //     $.comment,
-        // ],
         extras: $ => [
             $.comment,
             /[\s\f\uFEFF\u2060\u200B]|\\\r?\n/
@@ -36,19 +33,7 @@ module.exports = grammar(
                 $.label,
             ),
 
-            comment: $ => token(
-                // Comments in USD can be ``# foo`` or ``// bar``. ``//`` is rare
-                choice(
-                    seq("#", /.*/),
-                    seq(";", /.*/),
-                    seq("//", /.*/)
-                )
-            ),
-            // comment: $ => /(\/\/|#|;).*/,
-            // comment: $ => token(
-            //     choice("//", "#", ";"),
-            //     /.*/,
-            // ),
+            comment: $ => /(\/\/|#|;).*/,
 
             instruction: $ => choice(
                 $._normal_instruction,
