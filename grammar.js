@@ -37,7 +37,10 @@ module.exports = grammar(
 
             _normal_instruction: $ => seq(
                 $.mnemonic,
-                separated_space_or_comma($._operand)
+                choice(
+                    separated(",", $._operand),
+                    separated(" ", $._operand),
+                ),
             ),
 
             _gcc_pseudo_op: $ => seq(
@@ -50,7 +53,7 @@ module.exports = grammar(
                 )
             ),
 
-            label: $ => seq(/[^"]+:/),  // TODO: Check if I can make this more generic
+            label: $ => /.+:/,
 
             gcc_mnemonic: $ => /\.[\-_\w]+/,  // Reference: https://sourceware.org/binutils/docs/as/Pseudo-Ops.html
 
