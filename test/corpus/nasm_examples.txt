@@ -1,0 +1,16 @@
+==============================================================================
+len command with special characters
+==============================================================================
+
+len equ $ - msg         ;length of our dear string
+
+-----------------------------------------------------------------------------
+
+(program
+  (instruction
+    (mnemonic)
+    (identifier)
+    (identifier)
+    (identifier)
+    (identifier))
+  (comment))
