@@ -16,35 +16,35 @@ pseudo-ops 1
 
 (program
   (instruction
-    (mnemonic))
+    (directive))
   (instruction
-    (mnemonic)
+    (directive)
     (identifier))
   (instruction
-    (mnemonic)
+    (directive)
     (hexadecimal))
   (instruction
-    (mnemonic)
+    (directive)
     (identifier))
   (instruction
-    (mnemonic)
+    (directive)
     (string))
   (instruction
-    (mnemonic)
+    (directive)
     (identifier))
   (instruction
-    (mnemonic)
+    (directive)
     (identifier)
     (identifier))
   (instruction
-    (mnemonic)
+    (directive)
     (identifier)
     (string)
     (identifier)
     (identifier)
     (identifier))
   (instruction
-    (mnemonic)
+    (directive)
     (identifier)
     (identifier)))
 
@@ -59,7 +59,7 @@ pseudo-ops 2
 
 (program
   (instruction
-    (mnemonic)
+    (directive)
     (integer)
     (string)))
 
@@ -74,7 +74,7 @@ pseudo-ops 3
 
 (program
   (instruction
-    (mnemonic)
+    (directive)
     (string)))
 
 
@@ -88,7 +88,7 @@ pseudo-ops 4
 
 (program
   (instruction
-    (mnemonic)
+    (directive)
     (integer)
     (integer)
     (integer)))

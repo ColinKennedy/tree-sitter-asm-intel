@@ -198,7 +198,7 @@
             "name": "gcc_mnemonic"
           },
           "named": true,
-          "value": "mnemonic"
+          "value": "directive"
         },
         {
           "type": "CHOICE",
@@ -286,6 +286,10 @@
     "gcc_mnemonic": {
       "type": "PATTERN",
       "value": "\\.[\\-_\\w]+"
+    },
+    "directive": {
+      "type": "SYMBOL",
+      "name": "identifier"
     },
     "mnemonic": {
       "type": "PATTERN",

@@ -51,7 +51,7 @@ module.exports = grammar(
             ),
 
             _gcc_pseudo_op: $ => seq(
-                alias($.gcc_mnemonic, $.mnemonic),
+                alias($.gcc_mnemonic, $.directive),
                 separated_space_or_comma(
                     choice(
                         $._constant,
@@ -61,6 +61,7 @@ module.exports = grammar(
             ),
 
             gcc_mnemonic: $ => /\.[\-_\w]+/,  // Reference: https://sourceware.org/binutils/docs/as/Pseudo-Ops.html
+            directive: $ => $.identifier,
 
             mnemonic: $ => /\w+/,
 
