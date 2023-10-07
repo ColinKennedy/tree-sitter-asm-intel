@@ -105,7 +105,7 @@ module.exports = grammar(
             hexadecimal: $ => choice(
                 /[0-9a-fA-F]{3,}h/,
                 /\$0[0-9a-fA-F]{2,}/,
-                /0[xh][0-9a-fA-F]{1,}/
+                /0[xh][0-9a-fA-F]+/
             ),
 
             // Reference: https://github.com/bearcove/tree-sitter-x86asm/blob/9b0fab1092a2fe01e285ea4c892faa08b43cf125/grammar.js#L173
