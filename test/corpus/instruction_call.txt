@@ -17,7 +17,7 @@ call   1111 <_ZN4core3thing9const_thing$LT$detail$u20$$BP$const$u20$T$GT$3ahf17j
 @-ed
 ==============================================================================
 
-call	_ZN4math8vector3D8Vector3DC1Efff@PLT
+call _ZN4math8vector3D8Vector3DC1Efff@PLT
 
 
 -----------------------------------------------------------------------------

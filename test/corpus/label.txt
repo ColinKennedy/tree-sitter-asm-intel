@@ -43,3 +43,17 @@ _start: mov rax, 16
     (mnemonic)
     (register)
     (integer)))
+
+
+==============================================================================
+complex C++ labels
+==============================================================================
+
+operator<<(std::basic_ostream<char, std::char_traits<char> >&, math::matrix3D::Matrix3D const&):
+math::matrix3D::operator*(math::matrix3D::Matrix3D const&, math::vector3D::Vector3D const&):
+
+-----------------------------------------------------------------------------
+
+(program
+  (label)
+  (label))
