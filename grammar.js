@@ -29,11 +29,13 @@ module.exports = grammar(
 
             _statement: $ => choice(
                 $.comment,
-                $.instruction,
                 $.label,
+                $.instruction,
             ),
 
             comment: $ => /(\/\/|#|;).*/,
+
+            label: $ => /[^"\n]+:/,
 
             instruction: $ => choice(
                 $._normal_instruction,
@@ -57,8 +59,6 @@ module.exports = grammar(
                     )
                 )
             ),
-
-            label: $ => /.+:/,
 
             gcc_mnemonic: $ => /\.[\-_\w]+/,  // Reference: https://sourceware.org/binutils/docs/as/Pseudo-Ops.html
 

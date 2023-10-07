@@ -55,17 +55,21 @@
         },
         {
           "type": "SYMBOL",
-          "name": "instruction"
+          "name": "label"
         },
         {
           "type": "SYMBOL",
-          "name": "label"
+          "name": "instruction"
         }
       ]
     },
     "comment": {
       "type": "PATTERN",
       "value": "(\\/\\/|#|;).*"
+    },
+    "label": {
+      "type": "PATTERN",
+      "value": "[^\"\\n]+:"
     },
     "instruction": {
       "type": "CHOICE",
@@ -278,10 +282,6 @@
           ]
         }
       ]
-    },
-    "label": {
-      "type": "PATTERN",
-      "value": ".+:"
     },
     "gcc_mnemonic": {
       "type": "PATTERN",
