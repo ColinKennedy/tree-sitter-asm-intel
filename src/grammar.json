@@ -103,8 +103,17 @@
                     "type": "SEQ",
                     "members": [
                       {
-                        "type": "STRING",
-                        "value": ","
+                        "type": "CHOICE",
+                        "members": [
+                          {
+                            "type": "STRING",
+                            "value": ","
+                          },
+                          {
+                            "type": "STRING",
+                            "value": " "
+                          }
+                        ]
                       },
                       {
                         "type": "SYMBOL",
@@ -117,8 +126,17 @@
                   "type": "CHOICE",
                   "members": [
                     {
-                      "type": "STRING",
-                      "value": ","
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "STRING",
+                          "value": ","
+                        },
+                        {
+                          "type": "STRING",
+                          "value": " "
+                        }
+                      ]
                     },
                     {
                       "type": "BLANK"
@@ -238,10 +256,6 @@
         }
       ]
     },
-    "identifier": {
-      "type": "PATTERN",
-      "value": "[a-zA-Z\\.@\\(\\)\\-_][\\.@\\(\\)\\-_\\w]+"
-    },
     "gcc_mnemonic": {
       "type": "PATTERN",
       "value": "\\.[\\-_\\w]+"
@@ -264,6 +278,10 @@
         {
           "type": "SYMBOL",
           "name": "_constant"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
         }
       ]
     },
@@ -420,15 +438,15 @@
       "members": [
         {
           "type": "PATTERN",
-          "value": "[0-9a-fA-F]+h"
+          "value": "[0-9a-fA-F]{3,}h"
         },
         {
           "type": "PATTERN",
-          "value": "\\$0[0-9a-fA-F]+"
+          "value": "\\$0[0-9a-fA-F]{2,}"
         },
         {
           "type": "PATTERN",
-          "value": "0[xh][0-9a-fA-F]+"
+          "value": "0[xh][0-9a-fA-F]{2,}"
         }
       ]
     },
@@ -460,7 +478,7 @@
     },
     "register": {
       "type": "PATTERN",
-      "value": "[a-zA-Z]\\w+"
+      "value": "[a-zA-Z]\\w{1,2}"
     },
     "_constant": {
       "type": "CHOICE",
@@ -511,6 +529,10 @@
     "string": {
       "type": "PATTERN",
       "value": "\"[^\"]*\""
+    },
+    "identifier": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z\\.@\\(\\)\\-_<>][\\.@\\(\\)\\-_<>\\w]+"
     }
   },
   "extras": [

@@ -52,8 +52,6 @@ module.exports = grammar(
 
             label: $ => seq(/.+:/),
 
-            identifier: $ => /[a-zA-Z\.@\(\)\-_<>][\.@\(\)\-_<>\w]+/,
-
             gcc_mnemonic: $ => /\.[\-_\w]+/,  // Reference: https://sourceware.org/binutils/docs/as/Pseudo-Ops.html
 
             mnemonic: $ => /\w+/,
@@ -138,6 +136,8 @@ module.exports = grammar(
 
             integer: $ => /-?([0-9]+d|0d[0-9]+|[0-9]+)/,  // TODO: Check if this can be simplified
             string: $ => /"[^"]*"/,
+
+            identifier: $ => /[a-zA-Z\.@\(\)\-_<>][\.@\(\)\-_<>\w]+/,
         }
     }
 )
