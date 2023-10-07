@@ -16,7 +16,7 @@ _start:
     (register))
   (instruction
     (mnemonic)
-    (register)))
+    (identifier)))
 
 
 ==============================================================================
@@ -40,8 +40,9 @@ path:       db      "/etc/hosts", 0 ; null-terminated
 (program
   (instruction
     (mnemonic)
-    (identifier)
-    (register)
+    (identifier))
+  (instruction
+    (mnemonic)
     (identifier))
   (label)
   (instruction

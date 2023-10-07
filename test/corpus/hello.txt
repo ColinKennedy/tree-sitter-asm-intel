@@ -25,7 +25,56 @@ msg:    db "hi there", 10
 
 -----------------------------------------------------------------------------
 
-(program)
+(program
+  (comment)
+  (instruction
+    (mnemonic)
+    (identifier))
+  (instruction
+    (mnemonic)
+    (identifier))
+  (label)
+  (instruction
+    (mnemonic)
+    (register)
+    (integer))
+  (comment)
+  (instruction
+    (mnemonic)
+    (register)
+    (identifier))
+  (instruction
+    (mnemonic)
+    (register)
+    (integer))
+  (comment)
+  (instruction
+    (mnemonic)
+    (register)
+    (integer))
+  (comment)
+  (instruction
+    (mnemonic))
+  (instruction
+    (mnemonic)
+    (register)
+    (register))
+  (comment)
+  (instruction
+    (mnemonic)
+    (register)
+    (integer))
+  (comment)
+  (instruction
+    (mnemonic))
+  (instruction
+    (mnemonic)
+    (identifier))
+  (label)
+  (instruction
+    (mnemonic)
+    (string)
+    (integer)))
 
 
 ==============================================================================
@@ -121,4 +170,80 @@ _start:
 
 -----------------------------------------------------------------------------
 
-(program)
+(program
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (instruction
+    (mnemonic)
+    (identifier))
+  (comment)
+  (comment)
+  (instruction
+    (mnemonic)
+    (identifier))
+  (instruction
+    (mnemonic)
+    (identifier))
+  (instruction
+    (mnemonic)
+    (identifier)
+    (string)
+    (hexadecimal))
+  (comment)
+  (instruction
+    (mnemonic)
+    (identifier)
+    (identifier)
+    (identifier)
+    (identifier))
+  (comment)
+  (instruction
+    (mnemonic)
+    (identifier))
+  (comment)
+  (label)
+  (comment)
+  (instruction
+    (mnemonic)
+    (register)
+    (identifier))
+  (comment)
+  (instruction
+    (mnemonic)
+    (register)
+    (identifier))
+  (comment)
+  (instruction
+    (mnemonic)
+    (register)
+    (integer))
+  (comment)
+  (instruction
+    (mnemonic)
+    (register)
+    (integer))
+  (comment)
+  (instruction
+    (mnemonic)
+    (hexadecimal))
+  (comment)
+  (comment)
+  (instruction
+    (mnemonic)
+    (register)
+    (integer))
+  (comment)
+  (instruction
+    (mnemonic)
+    (register)
+    (integer))
+  (comment)
+  (instruction
+    (mnemonic)
+    (hexadecimal))
+  (comment))

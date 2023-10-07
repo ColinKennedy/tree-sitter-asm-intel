@@ -130,6 +130,11 @@
     }
   },
   {
+    "type": "register",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "string",
     "named": true,
     "fields": {}
@@ -227,8 +232,8 @@
     "named": false
   },
   {
-    "type": "register",
-    "named": true
+    "type": "rip",
+    "named": false
   },
   {
     "type": "word",

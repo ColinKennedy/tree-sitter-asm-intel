@@ -1,3 +1,7 @@
+msg db  'Hello, world!',0xa ;our dear string
+
+- Allow labels to come at the start of the line (or on their own line)
+
 - Go through TODO notes in the code
 - Make sure this works in a large repository of assembly code
 - Add support for
