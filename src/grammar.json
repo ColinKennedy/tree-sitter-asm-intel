@@ -73,6 +73,32 @@
               ]
             },
             {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "call_instruction"
+              },
+              "named": true,
+              "value": "instruction"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "label"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
               "type": "SYMBOL",
               "name": "instruction"
             }
@@ -132,7 +158,29 @@
     },
     "label": {
       "type": "PATTERN",
-      "value": "[\\w\\-\\.]+:"
+      "value": "[\\w\\-\\.<>: &\\(\\),*]+:"
+    },
+    "call_instruction": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "call"
+          },
+          "named": true,
+          "value": "mnemonic"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_operand"
+        }
+      ]
+    },
+    "_any_text": {
+      "type": "PATTERN",
+      "value": "[^\\n]+"
     },
     "instruction": {
       "type": "CHOICE",
@@ -617,31 +665,31 @@
       "members": [
         {
           "type": "PATTERN",
-          "value": "[abcd][lh]"
+          "value": "%?[abcd][lh]"
         },
         {
           "type": "PATTERN",
-          "value": "[er]?[abcd]x"
+          "value": "%?[er]?[abcd]x"
         },
         {
           "type": "PATTERN",
-          "value": "[er]?[ds]i"
+          "value": "%?[er]?[ds]i"
         },
         {
           "type": "PATTERN",
-          "value": "[er]?[sb]p"
+          "value": "%?[er]?[sb]p"
         },
         {
           "type": "PATTERN",
-          "value": "r(8|9|10|11|12|13|14|15)"
+          "value": "%?r(8|9|10|11|12|13|14|15)"
         },
         {
           "type": "PATTERN",
-          "value": "[xy]mm[0-7]"
+          "value": "%?[xy]mm[0-7]"
         },
         {
-          "type": "STRING",
-          "value": "rip"
+          "type": "PATTERN",
+          "value": "%?rip"
         }
       ]
     },

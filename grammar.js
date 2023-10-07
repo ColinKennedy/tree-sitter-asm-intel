@@ -40,11 +40,12 @@ module.exports = grammar(
             segment_prefix: $ => seq($.segment, ":"),
             segment: $ => choice("cs", "ds", "es", "fs", "gs", "ss"),  // TODO: Make this more generic, later
 
-            label: $ => /[\w\-\.]+:/,
+            label: $ => /[\w\-\.<>: &\(\),*]+:/,  // TODO: Make this more generic, later
 
             call_instruction: $ => seq(
                 alias("call", $.mnemonic),
-                alias($._any_text, $.identifier),
+                // alias($._any_text, $.identifier),
+                $._operand,
             ),
 
             _any_text: $ => /[^\n]+/,
