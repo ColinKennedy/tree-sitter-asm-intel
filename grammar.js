@@ -17,7 +17,7 @@
 
 module.exports = grammar(
     {
-        name: "asm_intel",
+        name: "asm",
 
         extras: $ => [
             $.comment,
