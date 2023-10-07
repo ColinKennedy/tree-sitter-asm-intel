@@ -42,3 +42,19 @@ foo "GCC: (GNU) 9.3.1 20200408 (Red Hat 9.3.1-2)"
   (instruction
     (mnemonic)
     (string)))
+
+
+==============================================================================
+single quoted string
+==============================================================================
+
+text:   db      'OK to rethrow, CANCEL to generate core dump',0
+
+-----------------------------------------------------------------------------
+
+(program
+  (label)
+  (instruction
+    (mnemonic)
+    (string)
+    (integer)))
