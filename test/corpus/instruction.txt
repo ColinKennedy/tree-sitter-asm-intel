@@ -135,3 +135,20 @@ db      "/etc/hosts", 0 ; null-terminated
     (string)
     (integer))
   (comment))
+
+
+==============================================================================
+bug - define byte string with null-terminated character
+==============================================================================
+
+msg db  'Hello, world!',0xa ;our dear string
+
+-----------------------------------------------------------------------------
+
+(program
+  (instruction
+    (mnemonic)
+    (identifier)
+    (string)
+    (hexadecimal))
+  (comment))
