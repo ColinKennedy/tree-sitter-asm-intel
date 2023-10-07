@@ -1,5 +1,5 @@
 {
-  "name": "asm_intel",
+  "name": "asm",
   "rules": {
     "program": {
       "type": "CHOICE",
