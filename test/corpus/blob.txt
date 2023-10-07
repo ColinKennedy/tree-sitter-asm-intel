@@ -37,4 +37,30 @@ path:       db      "/etc/hosts", 0 ; null-terminated
 
 -----------------------------------------------------------------------------
 
-(program)
+(program
+  (instruction
+    (mnemonic)
+    (identifier)
+    (register)
+    (identifier))
+  (label)
+  (instruction
+    (mnemonic)
+    (register)
+    (integer))
+  (comment)
+  (instruction
+    (mnemonic))
+  (instruction
+    (mnemonic)
+    (register))
+  (label)
+  (instruction
+    (mnemonic)
+    (identifier))
+  (label)
+  (instruction
+    (mnemonic)
+    (string)
+    (integer))
+  (comment))

@@ -58,8 +58,25 @@
           "name": "label"
         },
         {
-          "type": "SYMBOL",
-          "name": "instruction"
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "label"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "SYMBOL",
+              "name": "instruction"
+            }
+          ]
         }
       ]
     },

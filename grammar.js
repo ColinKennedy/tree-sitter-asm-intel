@@ -21,7 +21,7 @@ module.exports = grammar(
 
         extras: $ => [
             $.comment,
-            /[\s\f\uFEFF\u2060\u200B]|\\\r?\n/
+            /[\s\f\uFEFF\u2060\u200B]|\\\r?\n/,
         ],
 
         rules: {
@@ -30,7 +30,7 @@ module.exports = grammar(
             _statement: $ => choice(
                 $.comment,
                 $.label,
-                $.instruction,
+                seq(optional($.label), $.instruction),
             ),
 
             comment: $ => /(\/\/|#|;).*/,
