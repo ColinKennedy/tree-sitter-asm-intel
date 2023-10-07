@@ -26,3 +26,25 @@ call	_ZN4math8vector3D8Vector3DC1Efff@PLT
   (instruction
     (mnemonic)
     (identifier)))
+
+
+==============================================================================
+complex C++ calls
+==============================================================================
+
+call	math::vector2D::Vector2D::Vector2D(float, float)@PLT
+call	std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*)@PLT
+call	math::unit::Radian::get() const@PLT
+
+-----------------------------------------------------------------------------
+
+(program
+  (instruction
+    (mnemonic)
+    (identifier))
+  (instruction
+    (mnemonic)
+    (identifier))
+  (instruction
+    (mnemonic)
+    (identifier)))

@@ -30,6 +30,7 @@ module.exports = grammar(
             _statement: $ => choice(
                 $.comment,
                 $.label,
+                seq(optional($.label), alias($.call_instruction, $.instruction)),
                 seq(optional($.label), $.instruction),
                 $._macro,
             ),
@@ -40,6 +41,13 @@ module.exports = grammar(
             segment: $ => choice("cs", "ds", "es", "fs", "gs", "ss"),  // TODO: Make this more generic, later
 
             label: $ => /[\w\-\.]+:/,
+
+            call_instruction: $ => seq(
+                alias("call", $.mnemonic),
+                alias($._any_text, $.identifier),
+            ),
+
+            _any_text: $ => /[^\n]+/,
 
             instruction: $ => choice(
                 $._normal_instruction,
