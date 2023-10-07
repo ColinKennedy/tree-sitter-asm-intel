@@ -159,18 +159,15 @@ module.exports = grammar(
             // Reference: https://github.com/bearcove/tree-sitter-x86asm/blob/9b0fab1092a2fe01e285ea4c892faa08b43cf125/grammar.js#L171C1-L171C64
             octal: $ => choice(/[0-7]+[qo]/, /0[oq][0-7]+/),
 
-            // TODO: I can't remember if registers can start with a number. But
-            // so far I can't think of any which do. Possibly remove the
-            // `[a-zA-Z]` in the future, later
-            //
+            // Note: Allow a `%` prefix for AT&T syntax
             register: $ => choice(
-                /[abcd][lh]/,
-                /[er]?[abcd]x/,
-                /[er]?[ds]i/,
-                /[er]?[sb]p/,
-                /r(8|9|10|11|12|13|14|15)/,
-                /[xy]mm[0-7]/,
-                "rip",
+                /%?[abcd][lh]/,
+                /%?[er]?[abcd]x/,
+                /%?[er]?[ds]i/,
+                /%?[er]?[sb]p/,
+                /%?r(8|9|10|11|12|13|14|15)/,
+                /%?[xy]mm[0-7]/,
+                "%?rip",
             ),
 
             _constant: $ => choice(
