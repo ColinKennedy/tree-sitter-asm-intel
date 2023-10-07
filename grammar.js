@@ -134,17 +134,19 @@ module.exports = grammar(
                     optional($.segment_prefix),
                     choice(
                         seq(
-                            choice($.register, $.hexadecimal, $.integer),
-                            repeat(
-                                seq(
-                                    choice("-", "+", "*"),
-                                    choice($.integer, $.hexadecimal)
-                                )
-                            ),
+                            $._micro_op_operand,
+                            repeat(seq(choice("-", "+", "*"), $._micro_op_operand)),
                         ),
                     ),
                     "]",
                 ),
+            ),
+
+            _micro_op_operand: $ => choice(
+                $.hexadecimal,
+                $.identifier,
+                $.integer,
+                $.register,
             ),
 
             // Reference: https://github.com/bearcove/tree-sitter-x86asm/blob/9b0fab1092a2fe01e285ea4c892faa08b43cf125/grammar.js#L168-L169

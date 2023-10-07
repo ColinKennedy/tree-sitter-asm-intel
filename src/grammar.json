@@ -552,21 +552,8 @@
                 "type": "SEQ",
                 "members": [
                   {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "SYMBOL",
-                        "name": "register"
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "hexadecimal"
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "integer"
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "_micro_op_operand"
                   },
                   {
                     "type": "REPEAT",
@@ -591,17 +578,8 @@
                           ]
                         },
                         {
-                          "type": "CHOICE",
-                          "members": [
-                            {
-                              "type": "SYMBOL",
-                              "name": "integer"
-                            },
-                            {
-                              "type": "SYMBOL",
-                              "name": "hexadecimal"
-                            }
-                          ]
+                          "type": "SYMBOL",
+                          "name": "_micro_op_operand"
                         }
                       ]
                     }
@@ -616,6 +594,27 @@
           }
         ]
       }
+    },
+    "_micro_op_operand": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "hexadecimal"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "integer"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "register"
+        }
+      ]
     },
     "hexadecimal": {
       "type": "CHOICE",
