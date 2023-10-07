@@ -36,9 +36,10 @@ module.exports = grammar(
 
             comment: $ => /(\/\/|#|;).*/,
 
-            segment_register_prefix: $ => /[a-zA-Z]+:/,
+            segment_prefix: $ => seq($.segment, ":"),
+            segment: $ => choice("cs", "ds", "es", "fs", "gs", "ss"),  // TODO: Make this more generic, later
 
-            label: $ => /[^"\n]+:/,
+            label: $ => /[\w\-\.]+:/,
 
             instruction: $ => choice(
                 $._normal_instruction,
@@ -121,7 +122,7 @@ module.exports = grammar(
                 seq(
                     optional($.integer),  // Some conventions do `DWORD PTR -8[rbp]`
                     "[",
-                    optional($.segment_register_prefix),
+                    optional($.segment_prefix),
                     choice(
                         seq(
                             choice($.register, $.hexadecimal, $.integer),

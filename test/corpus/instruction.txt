@@ -167,5 +167,6 @@ push    dword [fs:0]
     (mnemonic)
     (width)
     (pointer
-      (segment_register_prefix)
+      (segment_prefix
+        (segment))
       (integer))))

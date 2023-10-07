@@ -88,13 +88,51 @@
       "type": "PATTERN",
       "value": "(\\/\\/|#|;).*"
     },
-    "segment_register_prefix": {
-      "type": "PATTERN",
-      "value": "[a-zA-Z]+:"
+    "segment_prefix": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "segment"
+        },
+        {
+          "type": "STRING",
+          "value": ":"
+        }
+      ]
+    },
+    "segment": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "cs"
+        },
+        {
+          "type": "STRING",
+          "value": "ds"
+        },
+        {
+          "type": "STRING",
+          "value": "es"
+        },
+        {
+          "type": "STRING",
+          "value": "fs"
+        },
+        {
+          "type": "STRING",
+          "value": "gs"
+        },
+        {
+          "type": "STRING",
+          "value": "ss"
+        }
+      ]
     },
     "label": {
       "type": "PATTERN",
-      "value": "[^\"\\n]+:"
+      "value": "[\\w\\-\\.]+:"
     },
     "instruction": {
       "type": "CHOICE",
@@ -452,7 +490,7 @@
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "segment_register_prefix"
+                "name": "segment_prefix"
               },
               {
                 "type": "BLANK"
