@@ -150,7 +150,7 @@ module.exports = grammar(
 
             integer: $ => /-?([0-9]+d|0d[0-9]+|[0-9]+)/,  // TODO: Check if this can be simplified
 
-            string: $ => /"[^"]*"/,
+            string: $ => choice(/"[^"]*"/, /'[^']*'/),
 
             identifier: $ => /[\w\.\-_\(\)<>@\$]+/,
         }

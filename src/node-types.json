@@ -130,6 +130,11 @@
     }
   },
   {
+    "type": "string",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "\n",
     "named": false
   },
@@ -223,10 +228,6 @@
   },
   {
     "type": "register",
-    "named": true
-  },
-  {
-    "type": "string",
     "named": true
   },
   {
