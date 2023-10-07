@@ -9,8 +9,8 @@ mov QWORD PTR [rbp], rdi
 (program
   (instruction
     (mnemonic)
+    (width)
     (pointer
-      (pointer_width)
       (register))
     (register)))
 
@@ -26,8 +26,8 @@ mov QWORD PTR -8[rbp], rdi
 (program
   (instruction
     (mnemonic)
+    (width)
     (pointer
-      (pointer_width)
       (integer)
       (register))
     (register)))
@@ -45,8 +45,8 @@ mov rdi, QWORD PTR -8[rbp]
   (instruction
     (mnemonic)
     (register)
+    (width)
     (pointer
-      (pointer_width)
       (integer)
       (register))))
 
@@ -63,8 +63,8 @@ mov rdi, QWORD PTR [rbp + 10]
   (instruction
     (mnemonic)
     (register)
+    (width)
     (pointer
-      (pointer_width)
       (register)
       (integer))))
 
@@ -81,8 +81,8 @@ mov rdi, QWORD PTR [rbp + 10 * 2]
   (instruction
     (mnemonic)
     (register)
+    (width)
     (pointer
-      (pointer_width)
       (register)
       (integer)
       (integer))))
@@ -100,8 +100,8 @@ mov rdi, QWORD PTR [rbp + 10 * 2 + 1]
   (instruction
     (mnemonic)
     (register)
+    (width)
     (pointer
-      (pointer_width)
       (register)
       (integer)
       (integer)

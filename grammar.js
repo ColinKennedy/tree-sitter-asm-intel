@@ -31,9 +31,12 @@ module.exports = grammar(
                 $.comment,
                 $.label,
                 seq(optional($.label), $.instruction),
+                $._macro,
             ),
 
             comment: $ => /(\/\/|#|;).*/,
+
+            segment_register_prefix: $ => /[a-zA-Z]+:/,
 
             label: $ => /[^"\n]+:/,
 
@@ -57,24 +60,40 @@ module.exports = grammar(
                 )
             ),
 
+            _macro: $ => seq(
+                $.nasm_macro,
+                repeat(choice($._operand, $.operator)),
+            ),
+
+            operator: $ => choice(
+                "!=",
+                "*",
+                "+",
+                "-",
+                "/",
+                "<=",
+                "==",
+                ">=",
+            ),
+
+            nasm_macro: $ => seq(/%+/, $._identifier),
+
             gcc_mnemonic: $ => /\.[\-_\w]+/,  // Reference: https://sourceware.org/binutils/docs/as/Pseudo-Ops.html
             directive: $ => $.identifier,
 
             mnemonic: $ => /\w+/,
 
-            _operand: $ => choice(
-                $.pointer,
-                $.register,
-                $._constant,
-                $.identifier,
+            _operand: $ => seq(
+                optional($.width),
+                choice(
+                    $.pointer,
+                    $.register,
+                    $._constant,
+                    $.identifier,
+                ),
             ),
 
-            pointer: $ => seq(
-                optional($.pointer_width),
-                $._deregister,
-            ),
-
-            pointer_width: $ => seq(
+            width: $ => seq(
                 choice(
                     "BYTE",
                     "DWORD",
@@ -85,7 +104,7 @@ module.exports = grammar(
                     "qword",
                     "word",
                 ),
-                choice("PTR", "ptr"),
+                optional(choice("PTR", "ptr")),
             ),
 
             // Assembly deregisters can take the form:
@@ -97,18 +116,21 @@ module.exports = grammar(
             //
             // This accounts for all of these
             //
-            _deregister: $ => prec(
+            pointer: $ => prec(
                 2,
                 seq(
-                    optional($.integer),
+                    optional($.integer),  // Some conventions do `DWORD PTR -8[rbp]`
                     "[",
-                    seq(
-                        choice($.register, $.hexadecimal),
-                        repeat(
-                            seq(
-                                choice("-", "+", "*"),
-                                choice($.integer, $.hexadecimal)
-                            )
+                    optional($.segment_register_prefix),
+                    choice(
+                        seq(
+                            choice($.register, $.hexadecimal, $.integer),
+                            repeat(
+                                seq(
+                                    choice("-", "+", "*"),
+                                    choice($.integer, $.hexadecimal)
+                                )
+                            ),
                         ),
                     ),
                     "]",
@@ -160,7 +182,8 @@ module.exports = grammar(
 
             string: $ => choice(/"[^"]*"/, /'[^']*'/),
 
-            identifier: $ => /[\w\.\-_\(\)<>@\$]+/,
+            _identifier: $ => /[\w\.\-_\(\)<>@\$]+/,
+            identifier: $ => $._identifier,
         }
     }
 )

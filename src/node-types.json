@@ -15,6 +15,11 @@
     "fields": {}
   },
   {
+    "type": "identifier",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "instruction",
     "named": true,
     "fields": {},
@@ -27,11 +32,11 @@
           "named": true
         },
         {
-          "type": "directive",
+          "type": "float",
           "named": true
         },
         {
-          "type": "float",
+          "type": "gcc_directive",
           "named": true
         },
         {
@@ -65,12 +70,26 @@
         {
           "type": "string",
           "named": true
+        },
+        {
+          "type": "width",
+          "named": true
         }
       ]
     }
   },
   {
+    "type": "nasm_macro",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "octal",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "operator",
     "named": true,
     "fields": {}
   },
@@ -91,20 +110,15 @@
           "named": true
         },
         {
-          "type": "pointer_width",
+          "type": "register",
           "named": true
         },
         {
-          "type": "register",
+          "type": "segment_register_prefix",
           "named": true
         }
       ]
     }
-  },
-  {
-    "type": "pointer_width",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "program",
@@ -115,7 +129,23 @@
       "required": false,
       "types": [
         {
+          "type": "binary",
+          "named": true
+        },
+        {
           "type": "comment",
+          "named": true
+        },
+        {
+          "type": "float",
+          "named": true
+        },
+        {
+          "type": "hexadecimal",
+          "named": true
+        },
+        {
+          "type": "identifier",
           "named": true
         },
         {
@@ -123,7 +153,39 @@
           "named": true
         },
         {
+          "type": "integer",
+          "named": true
+        },
+        {
           "type": "label",
+          "named": true
+        },
+        {
+          "type": "nasm_macro",
+          "named": true
+        },
+        {
+          "type": "octal",
+          "named": true
+        },
+        {
+          "type": "operator",
+          "named": true
+        },
+        {
+          "type": "pointer",
+          "named": true
+        },
+        {
+          "type": "register",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "width",
           "named": true
         }
       ]
@@ -140,11 +202,20 @@
     "fields": {}
   },
   {
+    "type": "width",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "\n",
     "named": false
   },
   {
     "type": " ",
+    "named": false
+  },
+  {
+    "type": "!=",
     "named": false
   },
   {
@@ -161,6 +232,22 @@
   },
   {
     "type": "-",
+    "named": false
+  },
+  {
+    "type": "/",
+    "named": false
+  },
+  {
+    "type": "<=",
+    "named": false
+  },
+  {
+    "type": "==",
+    "named": false
+  },
+  {
+    "type": ">=",
     "named": false
   },
   {
@@ -200,15 +287,11 @@
     "named": true
   },
   {
-    "type": "directive",
-    "named": true
-  },
-  {
     "type": "dword",
     "named": false
   },
   {
-    "type": "identifier",
+    "type": "gcc_directive",
     "named": true
   },
   {
@@ -234,6 +317,10 @@
   {
     "type": "rip",
     "named": false
+  },
+  {
+    "type": "segment_register_prefix",
+    "named": true
   },
   {
     "type": "word",

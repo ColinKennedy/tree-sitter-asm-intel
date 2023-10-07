@@ -54,8 +54,8 @@ mov qword ptr [rsp + 8], rdi
 (program
   (instruction
     (mnemonic)
+    (width)
     (pointer
-      (pointer_width)
       (register)
       (integer))
     (register)))
@@ -93,16 +93,16 @@ mov rdi, QWORD PTR -8[rbp]
 (program
   (instruction
     (mnemonic)
+    (width)
     (pointer
-      (pointer_width)
       (integer)
       (register))
     (register))
   (instruction
     (mnemonic)
     (register)
+    (width)
     (pointer
-      (pointer_width)
       (integer)
       (register))))
 
@@ -152,3 +152,20 @@ msg db  'Hello, world!',0xa ;our dear string
     (string)
     (hexadecimal))
   (comment))
+
+
+==============================================================================
+segment prefix register
+==============================================================================
+
+push    dword [fs:0]
+
+-----------------------------------------------------------------------------
+
+(program
+  (instruction
+    (mnemonic)
+    (width)
+    (pointer
+      (segment_register_prefix)
+      (integer))))
