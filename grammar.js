@@ -44,10 +44,7 @@ module.exports = grammar(
 
             _normal_instruction: $ => seq(
                 $.mnemonic,
-                choice(
-                    separated(",", $._operand),
-                    separated(" ", $._operand),
-                ),
+                repeat(seq(optional(","), $._operand)),
             ),
 
             _gcc_pseudo_op: $ => seq(
@@ -100,19 +97,22 @@ module.exports = grammar(
             //
             // This accounts for all of these
             //
-            _deregister: $ => seq(
-                optional($.integer),
-                "[",
+            _deregister: $ => prec(
+                2,
                 seq(
-                    choice($.register, $.hexadecimal),
-                    repeat(
-                        seq(
-                            choice("-", "+", "*"),
-                            choice($.integer, $.hexadecimal)
-                        )
+                    optional($.integer),
+                    "[",
+                    seq(
+                        choice($.register, $.hexadecimal),
+                        repeat(
+                            seq(
+                                choice("-", "+", "*"),
+                                choice($.integer, $.hexadecimal)
+                            )
+                        ),
                     ),
+                    "]",
                 ),
-                "]",
             ),
 
             // Reference: https://github.com/bearcove/tree-sitter-x86asm/blob/9b0fab1092a2fe01e285ea4c892faa08b43cf125/grammar.js#L168-L169
@@ -132,7 +132,15 @@ module.exports = grammar(
             // so far I can't think of any which do. Possibly remove the
             // `[a-zA-Z]` in the future, later
             //
-            register: $ => /[a-zA-Z]\w+/,
+            register: $ => choice(
+                /[abcd][lh]/,
+                /[er]?[abcd]x/,
+                /[er]?[ds]i/,
+                /[er]?[sb]p/,
+                /r(8|9|10|11|12|13|14|15)/,
+                /[xy]mm[0-7]/,
+                "rip",
+            ),
 
             _constant: $ => choice(
                 $.binary,
