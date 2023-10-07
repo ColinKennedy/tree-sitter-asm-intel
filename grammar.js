@@ -167,7 +167,7 @@ module.exports = grammar(
                 /%?[er]?[sb]p/,
                 /%?r(8|9|10|11|12|13|14|15)/,
                 /%?[xy]mm[0-7]/,
-                "%?rip",
+                /%?rip/,
             ),
 
             _constant: $ => choice(
