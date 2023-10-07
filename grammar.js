@@ -50,7 +50,7 @@ module.exports = grammar(
                 )
             ),
 
-            label: $ => seq(/.+:/),
+            label: $ => seq(/[^"]+:/),  // TODO: Check if I can make this more generic
 
             gcc_mnemonic: $ => /\.[\-_\w]+/,  // Reference: https://sourceware.org/binutils/docs/as/Pseudo-Ops.html
 
@@ -135,6 +135,7 @@ module.exports = grammar(
             ),
 
             integer: $ => /-?([0-9]+d|0d[0-9]+|[0-9]+)/,  // TODO: Check if this can be simplified
+
             string: $ => /"[^"]*"/,
 
             identifier: $ => /[\w\.\-_\(\)<>@\$]+/,

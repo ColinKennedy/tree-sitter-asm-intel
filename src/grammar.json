@@ -252,7 +252,7 @@
       "members": [
         {
           "type": "PATTERN",
-          "value": ".+:"
+          "value": "[^\"]+:"
         }
       ]
     },
@@ -446,7 +446,7 @@
         },
         {
           "type": "PATTERN",
-          "value": "0[xh][0-9a-fA-F]{1,}"
+          "value": "0[xh][0-9a-fA-F]+"
         }
       ]
     },
@@ -532,7 +532,7 @@
     },
     "identifier": {
       "type": "PATTERN",
-      "value": "[\\w\\.\\-<>@\\$]+"
+      "value": "[\\w\\.\\-_\\(\\)<>@\\$]+"
     }
   },
   "extras": [
