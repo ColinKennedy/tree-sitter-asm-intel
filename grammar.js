@@ -46,7 +46,7 @@ module.exports = grammar(
                 alias("call", $.mnemonic),
                 choice(
                     repeat($._operand),
-                    alias($._any_text, $.identifier)
+                    alias($._any_text, $.identifier),
                 ),
             ),
 
