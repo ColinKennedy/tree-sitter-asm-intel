@@ -16,35 +16,35 @@ pseudo-ops 1
 
 (program
   (instruction
-    (directive))
+    (gcc_directive))
   (instruction
-    (directive)
+    (gcc_directive)
     (identifier))
   (instruction
-    (directive)
+    (gcc_directive)
     (hexadecimal))
   (instruction
-    (directive)
+    (gcc_directive)
     (identifier))
   (instruction
-    (directive)
+    (gcc_directive)
     (string))
   (instruction
-    (directive)
+    (gcc_directive)
     (identifier))
   (instruction
-    (directive)
+    (gcc_directive)
     (identifier)
     (identifier))
   (instruction
-    (directive)
+    (gcc_directive)
     (identifier)
     (string)
     (identifier)
     (identifier)
     (identifier))
   (instruction
-    (directive)
+    (gcc_directive)
     (identifier)
     (identifier)))
 
@@ -59,7 +59,7 @@ pseudo-ops 2
 
 (program
   (instruction
-    (directive)
+    (gcc_directive)
     (integer)
     (string)))
 
@@ -74,7 +74,7 @@ pseudo-ops 3
 
 (program
   (instruction
-    (directive)
+    (gcc_directive)
     (string)))
 
 
@@ -88,7 +88,7 @@ pseudo-ops 4
 
 (program
   (instruction
-    (directive)
+    (gcc_directive)
     (integer)
     (integer)
     (integer)))
