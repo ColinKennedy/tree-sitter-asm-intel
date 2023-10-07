@@ -446,8 +446,17 @@
                     ]
                   },
                   {
-                    "type": "SYMBOL",
-                    "name": "integer"
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "integer"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "hexadecimal"
+                      }
+                    ]
                   }
                 ]
               }

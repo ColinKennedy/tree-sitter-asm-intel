@@ -104,7 +104,12 @@ module.exports = grammar(
                 "[",
                 seq(
                     choice($.register, $.hexadecimal),
-                    repeat(seq(choice("-", "+", "*"), $.integer)),
+                    repeat(
+                        seq(
+                            choice("-", "+", "*"),
+                            choice($.integer, $.hexadecimal)
+                        )
+                    ),
                 ),
                 "]",
             ),

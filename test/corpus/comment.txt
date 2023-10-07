@@ -58,7 +58,14 @@ lea    rax,[rip+0xfffff]        # Do <stuff> here
 
 -----------------------------------------------------------------------------
 
-(program)
+(program
+  (instruction
+    (mnemonic)
+    (register)
+    (pointer
+      (register)
+      (hexadecimal)))
+  (comment))
 
 
 ==============================================================================
