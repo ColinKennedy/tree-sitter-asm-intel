@@ -104,7 +104,11 @@ module.exports = grammar(
             ),
 
             // Reference: https://github.com/bearcove/tree-sitter-x86asm/blob/9b0fab1092a2fe01e285ea4c892faa08b43cf125/grammar.js#L168-L169
-            hexadecimal: $ => choice(/[0-9a-fA-F]+h/, /\$0[0-9a-fA-F]+/, /0[xh][0-9a-fA-F]+/),
+            hexadecimal: $ => choice(
+                /[0-9a-fA-F]{3,}h/,
+                /\$0[0-9a-fA-F]{2,}/,
+                /0[xh][0-9a-fA-F]{2,}/
+            ),
 
             // Reference: https://github.com/bearcove/tree-sitter-x86asm/blob/9b0fab1092a2fe01e285ea4c892faa08b43cf125/grammar.js#L173
             binary: $ => choice(/[01_]+[by]/, /0[by][01_]+/),
