@@ -36,10 +36,15 @@ mov     cx,0xc4
 mov     cx,0c4h
 mov     cx,$0c2
 mov     cx,0hc2
+mov     ah,07h
 
 -----------------------------------------------------------------------------
 
 (program
+  (instruction
+    (mnemonic)
+    (register)
+    (hexadecimal))
   (instruction
     (mnemonic)
     (register)
