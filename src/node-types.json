@@ -60,6 +60,10 @@
           "named": true
         },
         {
+          "type": "placeholder",
+          "named": true
+        },
+        {
           "type": "pointer",
           "named": true
         },
@@ -174,6 +178,10 @@
         },
         {
           "type": "operator",
+          "named": true
+        },
+        {
+          "type": "placeholder",
           "named": true
         },
         {
@@ -352,6 +360,10 @@
   },
   {
     "type": "mnemonic",
+    "named": true
+  },
+  {
+    "type": "placeholder",
     "named": true
   },
   {

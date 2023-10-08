@@ -456,6 +456,10 @@
             {
               "type": "SYMBOL",
               "name": "identifier"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "placeholder"
             }
           ]
         }
@@ -634,7 +638,7 @@
       "members": [
         {
           "type": "PATTERN",
-          "value": "[0-9a-fA-F]{3,}h"
+          "value": "[0-9a-fA-F][0-9a-fA-F][0-9a-fA-F]*h"
         },
         {
           "type": "PATTERN",
@@ -767,6 +771,10 @@
     "_any_text": {
       "type": "PATTERN",
       "value": "[^\\n]+"
+    },
+    "placeholder": {
+      "type": "STRING",
+      "value": "?"
     },
     "_identifier": {
       "type": "PATTERN",

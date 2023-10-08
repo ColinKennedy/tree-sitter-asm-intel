@@ -91,6 +91,7 @@ module.exports = grammar(
                     $.register,
                     $._constant,
                     $.identifier,
+                    $.placeholder,
                 ),
             ),
 
@@ -183,6 +184,8 @@ module.exports = grammar(
             string: $ => choice(/"[^"]*"/, /'[^']*'/),
 
             _any_text: $ => /[^\n]+/,
+
+            placeholder: $ => "?",
 
             _identifier: $ => /[\w\.\-_\(\)<>@\$]+/,
             identifier: $ => $._identifier,
