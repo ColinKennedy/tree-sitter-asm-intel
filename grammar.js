@@ -32,8 +32,8 @@ module.exports = grammar(
                 $.label,
                 seq(optional($.label), alias($.call_instruction, $.instruction)),
                 seq(optional($.label), $.instruction),
-                $._macro,
-                $.nasm_directive,
+                $.nasm_preprocess_directive,
+                $.nasm_assembler_directive,
             ),
 
             comment: $ => /(\/\/|#|;).*/,
@@ -71,20 +71,17 @@ module.exports = grammar(
                 )
             ),
 
-            _macro: $ => seq(
-                $.nasm_macro,
-                repeat(choice($._operand, $.operator)),
-            ),
-
             operator: $ => choice("!=", "*", "+", "-", "/", "<=", "==", ">="),
 
-            nasm_macro: $ => seq(/%+/, $._identifier),
-            nasm_directive: $ => seq(
-                "[",
-                $.mnemonic,
-                repeat($._operand),
-                "]",
+            nasm_preprocess_directive: $ => seq(
+                // TODO: This probably can be simplified to just /%\w+/ in the future
+                /%+/, $._identifier,
+                separated_space_or_comma(
+                    choice(alias($._nasm_macro, $.macro), $._operand, $.operator)
+                ),
             ),
+            nasm_assembler_directive: $ => seq("[", $.mnemonic, repeat($._operand), "]"),
+            _nasm_macro: $ => /[A-Z_]+/,
 
             gcc_mnemonic: $ => /\.[\-_\w]+/,  // Reference: https://sourceware.org/binutils/docs/as/Pseudo-Ops.html
             directive: $ => $.identifier,

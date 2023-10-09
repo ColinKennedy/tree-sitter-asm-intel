@@ -11,10 +11,10 @@ simple NASM macro
 
 -----------------------------------------------------------------------------
 
-(program
-  (nasm_macro)
-  (identifier)
-  (integer)
+(program)
+  (nasm_preprocess_directive
+    (identifier)
+    (integer))
   (instruction
     (mnemonic)
     (register))
@@ -70,8 +70,41 @@ default rel
   (instruction
     (mnemonic)
     (identifier))
-  (nasm_directive
+  (nasm_assembler_directive
     (mnemonic)
     (integer))
-  (nasm_macro)
-  (string))
+  (nasm_preprocess_directive
+    (string)))
+
+
+==============================================================================
+NASM macros with commas
+==============================================================================
+
+%ifdef __NASM_VER__
+%ifidn __OUTPUT_FORMAT__, win64
+%error nasm not supported in windows
+%else
+%define endproc_frame
+%endif
+%endif
+
+------------------------------------------------------------------------------
+
+(program
+  (nasm_preprocess_directive
+    (macro))
+  (nasm_preprocess_directive
+    (macro)
+    (identifier))
+  (nasm_preprocess_directive
+    (identifier)
+    (identifier)
+    (identifier)
+    (identifier)
+    (identifier))
+  (nasm_preprocess_directive)
+  (nasm_preprocess_directive
+    (identifier))
+  (nasm_preprocess_directive)
+  (nasm_preprocess_directive))
