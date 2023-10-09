@@ -884,7 +884,7 @@
     },
     "_identifier": {
       "type": "PATTERN",
-      "value": "[\\w\\.\\-_\\(\\)<>@\\$]+"
+      "value": "[\\w\\.\\-_\\(\\)<>@\\$+]+"
     },
     "identifier": {
       "type": "SYMBOL",

@@ -191,7 +191,7 @@ module.exports = grammar(
 
             placeholder: $ => "?",
 
-            _identifier: $ => /[\w\.\-_\(\)<>@\$]+/,
+            _identifier: $ => /[\w\.\-_\(\)<>@\$+]+/,
             identifier: $ => $._identifier,
         }
     }
