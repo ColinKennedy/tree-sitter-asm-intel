@@ -106,7 +106,11 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_macro"
+          "name": "nasm_preprocess_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "nasm_assembler_directive"
         }
       ]
     },
@@ -336,31 +340,6 @@
         }
       ]
     },
-    "_macro": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "nasm_macro"
-        },
-        {
-          "type": "REPEAT",
-          "content": {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "_operand"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "operator"
-              }
-            ]
-          }
-        }
-      ]
-    },
     "operator": {
       "type": "CHOICE",
       "members": [
@@ -398,7 +377,7 @@
         }
       ]
     },
-    "nasm_macro": {
+    "nasm_preprocess_directive": {
       "type": "SEQ",
       "members": [
         {
@@ -408,8 +387,135 @@
         {
           "type": "SYMBOL",
           "name": "_identifier"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "ALIAS",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "_nasm_macro"
+                      },
+                      "named": true,
+                      "value": "macro"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "_operand"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "operator"
+                    }
+                  ]
+                },
+                {
+                  "type": "REPEAT",
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "CHOICE",
+                        "members": [
+                          {
+                            "type": "STRING",
+                            "value": ","
+                          },
+                          {
+                            "type": "STRING",
+                            "value": " "
+                          }
+                        ]
+                      },
+                      {
+                        "type": "CHOICE",
+                        "members": [
+                          {
+                            "type": "ALIAS",
+                            "content": {
+                              "type": "SYMBOL",
+                              "name": "_nasm_macro"
+                            },
+                            "named": true,
+                            "value": "macro"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "_operand"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "operator"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "STRING",
+                          "value": ","
+                        },
+                        {
+                          "type": "STRING",
+                          "value": " "
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
+    },
+    "nasm_assembler_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "["
+        },
+        {
+          "type": "SYMBOL",
+          "name": "mnemonic"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_operand"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "]"
+        }
+      ]
+    },
+    "_nasm_macro": {
+      "type": "PATTERN",
+      "value": "[A-Z_]+"
     },
     "gcc_mnemonic": {
       "type": "PATTERN",

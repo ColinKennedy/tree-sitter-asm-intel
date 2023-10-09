@@ -83,9 +83,126 @@
     }
   },
   {
-    "type": "nasm_macro",
+    "type": "nasm_assembler_directive",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "binary",
+          "named": true
+        },
+        {
+          "type": "float",
+          "named": true
+        },
+        {
+          "type": "hexadecimal",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "mnemonic",
+          "named": true
+        },
+        {
+          "type": "octal",
+          "named": true
+        },
+        {
+          "type": "placeholder",
+          "named": true
+        },
+        {
+          "type": "pointer",
+          "named": true
+        },
+        {
+          "type": "register",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "width",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "nasm_preprocess_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "binary",
+          "named": true
+        },
+        {
+          "type": "float",
+          "named": true
+        },
+        {
+          "type": "hexadecimal",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "macro",
+          "named": true
+        },
+        {
+          "type": "octal",
+          "named": true
+        },
+        {
+          "type": "operator",
+          "named": true
+        },
+        {
+          "type": "placeholder",
+          "named": true
+        },
+        {
+          "type": "pointer",
+          "named": true
+        },
+        {
+          "type": "register",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "width",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "octal",
@@ -137,23 +254,7 @@
       "required": false,
       "types": [
         {
-          "type": "binary",
-          "named": true
-        },
-        {
           "type": "comment",
-          "named": true
-        },
-        {
-          "type": "float",
-          "named": true
-        },
-        {
-          "type": "hexadecimal",
-          "named": true
-        },
-        {
-          "type": "identifier",
           "named": true
         },
         {
@@ -161,43 +262,15 @@
           "named": true
         },
         {
-          "type": "integer",
-          "named": true
-        },
-        {
           "type": "label",
           "named": true
         },
         {
-          "type": "nasm_macro",
+          "type": "nasm_assembler_directive",
           "named": true
         },
         {
-          "type": "octal",
-          "named": true
-        },
-        {
-          "type": "operator",
-          "named": true
-        },
-        {
-          "type": "placeholder",
-          "named": true
-        },
-        {
-          "type": "pointer",
-          "named": true
-        },
-        {
-          "type": "register",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        },
-        {
-          "type": "width",
+          "type": "nasm_preprocess_directive",
           "named": true
         }
       ]
@@ -356,6 +429,10 @@
   },
   {
     "type": "label",
+    "named": true
+  },
+  {
+    "type": "macro",
     "named": true
   },
   {
