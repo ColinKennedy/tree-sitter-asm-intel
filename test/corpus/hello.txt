@@ -131,15 +131,15 @@ section .drectve info
   (instruction
     (mnemonic)
     (identifier))
-  (nasm_macro)
-  (identifier)
-  (operator)
-  (hexadecimal)
+  (nasm_preprocess_directive
+    (macro)
+    (operator)
+    (hexadecimal))
   (instruction
     (mnemonic)
     (identifier))
   (comment)
-  (nasm_macro)
+  (nasm_preprocess_directive)
   (label)
   (instruction
     (mnemonic)
@@ -335,8 +335,8 @@ _start:
   (instruction
     (mnemonic)
     (identifier)
-    (identifier)
-    (identifier)
+    (position)
+    (operator)
     (identifier))
   (comment)
   (instruction
