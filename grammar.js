@@ -33,6 +33,7 @@ module.exports = grammar(
                 seq(optional($.label), alias($.call_instruction, $.instruction)),
                 seq(optional($.label), $.instruction),
                 $._macro,
+                $.nasm_directive,
             ),
 
             comment: $ => /(\/\/|#|;).*/,
@@ -78,6 +79,12 @@ module.exports = grammar(
             operator: $ => choice("!=", "*", "+", "-", "/", "<=", "==", ">="),
 
             nasm_macro: $ => seq(/%+/, $._identifier),
+            nasm_directive: $ => seq(
+                "[",
+                $.mnemonic,
+                repeat($._operand),
+                "]",
+            ),
 
             gcc_mnemonic: $ => /\.[\-_\w]+/,  // Reference: https://sourceware.org/binutils/docs/as/Pseudo-Ops.html
             directive: $ => $.identifier,
